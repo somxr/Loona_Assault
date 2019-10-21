@@ -3,17 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Splash : MonoBehaviour
+public class Sceneloader : MonoBehaviour
 {
-    private void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
-
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("startGame",4f);
+        Invoke("startGame", 4f);
     }
 
     private void startGame()

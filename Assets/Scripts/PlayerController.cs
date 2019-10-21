@@ -4,44 +4,46 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class Player : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
 
-   [Tooltip("In m/s")] [SerializeField] float xSpeed = 25f;
-
+    [Header("General")]
+    [Tooltip("In m/s")] [SerializeField] float xSpeed = 25f;
     [Tooltip("In meters")] [SerializeField] float xRange = 10.5f;
-
     [Tooltip("In m/s")] [SerializeField] float ySpeed = 25f;
-
     [Tooltip("In meters")] [SerializeField] float yRange = 4f;
 
-    [SerializeField] float positionPitchFactor = -4f;
-    [SerializeField] float throwPitchFactor = -10f;
-
+    [Header("Screen-Position Based Parameters")]
+    [SerializeField] float pitchPositionFactor = -4f;
     [SerializeField] float yawPositionFactor = 4f;
 
+    [Header("Control-Throw Based Parameters")]
+    [SerializeField] float pitchThrowFactor = -10f;
     [SerializeField] float rollThrowFactor = -10f;
 
     float xThrow, yThrow;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    bool controlsEnabled = true;
 
     // Update is called once per frame
     void Update()
     {
-        processTranslation();
-        processRotation();
+        if (controlsEnabled)
+        {
+            ProcessInput(controlsEnabled);
+        }
     }
 
-    private void processRotation()
+    private void ProcessInput(bool controlsEnabled)
     {
-        float pitchDueToPosition = transform.localPosition.y * positionPitchFactor;
-        float pitchDueToThrow = yThrow * throwPitchFactor;
+            ProcessTranslation();
+            ProcessRotation();
+    }
+
+    private void ProcessRotation()
+    {
+        float pitchDueToPosition = transform.localPosition.y * pitchPositionFactor;
+        float pitchDueToThrow = yThrow * pitchThrowFactor;
         float pitch = pitchDueToPosition + pitchDueToThrow;
 
         float yaw = transform.localPosition.x * yawPositionFactor;
@@ -51,13 +53,13 @@ public class Player : MonoBehaviour
         transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
     }
 
-    private void processTranslation()
+    private void ProcessTranslation()
     {
-        xTranslation();
-        yTranslation();
+        XTranslation();
+        YTranslation();
     }
 
-    private void yTranslation()
+    private void YTranslation()
     {
         yThrow = CrossPlatformInputManager.GetAxis("Vertical");
 
@@ -69,7 +71,7 @@ public class Player : MonoBehaviour
         transform.localPosition = new Vector3(transform.localPosition.x, yPositionClamp, transform.localPosition.z);
     }
 
-    private void xTranslation()
+    private void XTranslation()
     {
         xThrow = CrossPlatformInputManager.GetAxis("Horizontal");
 
@@ -80,6 +82,12 @@ public class Player : MonoBehaviour
 
         transform.localPosition = new Vector3(xPositionClamp, transform.localPosition.y, transform.localPosition.z);
     }
+
+    public void OnPlayerDeath() //Called by STRING REFERENCE. Careful if changing method name, it will not be called 
+    {                             //from the other script CollisionHandler
+        controlsEnabled = false;
+    }
+
 }
 
 
