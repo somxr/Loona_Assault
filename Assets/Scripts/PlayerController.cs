@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float pitchThrowFactor = -10f;
     [SerializeField] float rollThrowFactor = -10f;
 
+    [SerializeField] GameObject[] guns;
+
     float xThrow, yThrow;
 
     bool controlsEnabled = true;
@@ -36,8 +38,9 @@ public class PlayerController : MonoBehaviour
 
     private void ProcessInput(bool controlsEnabled)
     {
-            ProcessTranslation();
-            ProcessRotation();
+        ProcessTranslation();
+        ProcessRotation();
+        ProccessShooting();
     }
 
     private void ProcessRotation()
@@ -48,7 +51,7 @@ public class PlayerController : MonoBehaviour
 
         float yaw = transform.localPosition.x * yawPositionFactor;
 
-        float roll = xThrow * rollThrowFactor; 
+        float roll = xThrow * rollThrowFactor;
 
         transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
     }
@@ -88,6 +91,32 @@ public class PlayerController : MonoBehaviour
         controlsEnabled = false;
     }
 
+    private void ProccessShooting()
+    {
+        if (CrossPlatformInputManager.GetButton("Fire"))
+        {
+            EnableGuns();
+        }
+        else
+        {
+            DisableGuns();
+        }
+    }
+
+    private void EnableGuns()
+    {
+        foreach (GameObject gun in guns)
+        {
+            gun.SetActive(true);
+        }
+    }
+
+    private void DisableGuns()
+    {
+        foreach (GameObject gun in guns)
+        {
+            gun.SetActive(false);
+        }
+    }
+
 }
-
-
