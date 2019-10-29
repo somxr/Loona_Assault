@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4655758116509614}
   - component: {fileID: 33645135167930238}
   - component: {fileID: 23854946942751046}
-  - component: {fileID: 7457187474258341057}
   - component: {fileID: -5790946791910166670}
   m_Layer: 0
   m_Name: Ship_05
@@ -81,19 +80,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &7457187474258341057
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1754910023302818}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.6604988, y: 0.12685722, z: 0.5375033}
-  m_Center: {x: 0, y: 0.000000007450581, z: 0.00000011920929}
 --- !u!114 &-5790946791910166670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,3 +92,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d063e068be8c2546bf0e6a7010edd37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathFX: {fileID: 1646427543784712055, guid: cc2ec1398d0d5fa41b2e6991bf32e998, type: 3}

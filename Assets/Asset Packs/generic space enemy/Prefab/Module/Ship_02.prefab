@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4354848751893472}
   - component: {fileID: 33219907115598346}
   - component: {fileID: 23021765208169616}
-  - component: {fileID: 5676135948231805378}
   - component: {fileID: -465721057875842426}
   - component: {fileID: 5522914388324210506}
   m_Layer: 0
@@ -82,19 +81,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &5676135948231805378
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1238095480485456}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.6627084, y: 0.48463184, z: 0.1403246}
-  m_Center: {x: 0, y: 0, z: 0.000000055879354}
 --- !u!65 &-465721057875842426
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -120,3 +106,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d063e068be8c2546bf0e6a7010edd37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathFX: {fileID: 1646427543784712055, guid: cc2ec1398d0d5fa41b2e6991bf32e998, type: 3}
