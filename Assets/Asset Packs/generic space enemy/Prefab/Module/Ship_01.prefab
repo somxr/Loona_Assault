@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1090395654553690}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.049611967}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 12, y: 12, z: 12}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -93,3 +93,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathFX: {fileID: 1646427543784712055, guid: cc2ec1398d0d5fa41b2e6991bf32e998, type: 3}
+  spawnedAtRuntime: {fileID: 0}
+  scorePerHit: 10
+  hits: 4
