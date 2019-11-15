@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float pitchThrowFactor = -10f;
     [SerializeField] float rollThrowFactor = -10f;
 
-    [SerializeField] GameObject[] guns;
+    [SerializeField] ParticleSystem[] guns;
 
     float xThrow, yThrow;
 
@@ -95,27 +95,20 @@ public class PlayerController : MonoBehaviour
     {
         if (CrossPlatformInputManager.GetButton("Fire"))
         {
-            EnableGuns();
+            SetGunsActive(true);
         }
         else
         {
-            DisableGuns();
+            SetGunsActive(false);
         }
     }
 
-    private void EnableGuns()
+    private void SetGunsActive(bool isActive)
     {
-        foreach (GameObject gun in guns)
+        foreach (ParticleSystem gun in guns)
         {
-            gun.SetActive(true);
-        }
-    }
-
-    private void DisableGuns()
-    {
-        foreach (GameObject gun in guns)
-        {
-            gun.SetActive(false);
+            var em = gun.emission;
+            em.enabled = isActive;
         }
     }
 
